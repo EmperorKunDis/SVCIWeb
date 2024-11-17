@@ -182,7 +182,7 @@ useGLTF.preload('/models/untitled-transformed.glb');
 function CameraRig() {
     useFrame((state, delta) => {
         easing.damp3(state.camera.position, [-7.8 + (state.pointer.y * state.viewport.width) / 1.1, 15 + (state.pointer.x * state.viewport.height ) / 1.1, -5.5], 0.5, delta)
-        state.camera.lookAt(0, 0, -15)
+        state.camera.lookAt(0, 0, -35)
     })
 }
 
