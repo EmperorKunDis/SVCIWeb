@@ -207,7 +207,7 @@ const Hero = () => {
                 <Canvas className="w-full h-full">
                     <Suspense fallback={<CanvasLoader />}>
                         <CameraRig />
-                        <PerspectiveCamera position={[10, 10, 20]} zoom={100} fov={90} />
+                        <PerspectiveCamera position={[10, 10, 20]} zoom={140} fov={90} />
                        
                         <Model
                             position={sizes.deskPosition}
