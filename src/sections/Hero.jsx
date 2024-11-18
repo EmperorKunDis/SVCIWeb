@@ -144,8 +144,8 @@ function Model(props) {
                             }}
                         >
                             {hovered === mesh.name && (
-                                <Html position={[0, 0, 0]} center>
-                                    <div className="bg-black text-white px-2 py-1 rounded text-sm">
+                                <Html position={[3, 0, 0]} center>
+                                    <div className="bg-white text-black px-2 py-1 rounded text-sm">
                                         {mesh.title}
                                     </div>
                                 </Html>
@@ -181,8 +181,12 @@ useGLTF.preload('/models/untitled-transformed.glb');
 
 function CameraRig() {
     useFrame((state, delta) => {
-        easing.damp3(state.camera.position, [-10 + (state.pointer.y * state.viewport.width) / 1.1, (25 + state.pointer.x * state.viewport.height ) / 1.1, -5.5], 0.5, delta)
-        state.camera.lookAt(0, 0, -5)
+        easing.damp3(state.camera.position, [
+            -8.5, 
+            (100.2 + state.pointer.y * state.viewport.width) / 30,
+            -5.5 + (state.pointer.x * state.viewport.height) / 20], 
+            0.25, delta)
+        state.camera.lookAt(-5, 2, -5.1)
     })
 }
 
@@ -199,7 +203,7 @@ const Hero = () => {
             <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 c-space gap-3">
                 <p className="sm:text-3xl font-medium text-neutral-600 text-center font-generalsans">
                     Mount and Blade 2 : Bannerlord Group
-                    <span className="waving-hand"></span>
+                    
                 </p>
                 <p className="hero_tag text-white">Czechoslovak Corps</p>
             </div>
@@ -207,12 +211,12 @@ const Hero = () => {
                 <Canvas className="w-full h-full">
                     <Suspense fallback={<CanvasLoader />}>
                         <CameraRig />
-                        <PerspectiveCamera position={[10, 10, 20]} zoom={100} fov={90} />
+                        <PerspectiveCamera position={[50, 20, 1040]} zoom={100} fov={90} />
                        
                         <Model
                             position={sizes.deskPosition}
                             rotation={[0, 120, 0]}
-                            scale={(sizes.deskScale) * 50}
+                            scale={(sizes.deskScale) * 60}
                         />
                         <ambientLight intensity={5} />
                         <directionalLight position={[10, 10, 10]} intensity={2.5} />
