@@ -6,7 +6,7 @@ import { easing } from 'maath';
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constants/index.js";
 import { Selection, EffectComposer, Outline, Select } from '@react-three/postprocessing';
-import { Html } from '@react-three/drei';
+
 
 function Model(props) {
     const { nodes, materials } = useGLTF('/models/untitled-transformed.glb');
@@ -118,6 +118,46 @@ function Model(props) {
         console.log(`Navigating to ${title} section`);
     };
 
+    const triggerNavbarShine = (meshName) => {
+        const navMapping = {
+            'Book': 'Media',
+            'Line054': 'SVCI',
+            'Line048': 'LBO',
+            'Object004001': 'Leadership',
+            'polySurface17001': 'Where We Are',
+            'Scroll': 'Contact',
+            'Object008': 'Join us'
+        };
+
+        const navItem = navMapping[meshName];
+        if (navItem) {
+            const navElement = document.querySelector(`[data-nav-item="${navItem}"]`);
+            if (navElement) {
+                navElement.classList.add('shine-active');
+            }
+        }
+    };
+
+    const removeNavbarShine = (meshName) => {
+        const navMapping = {
+            'Book': 'Media',
+            'Line054': 'SVCI',
+            'Line048': 'LBO',
+            'Object004001': 'Leadership',
+            'polySurface17001': 'Where We Are',
+            'Scroll': 'Contact',
+            'Object008': 'Join us'
+        };
+
+        const navItem = navMapping[meshName];
+        if (navItem) {
+            const navElement = document.querySelector(`[data-nav-item="${navItem}"]`);
+            if (navElement) {
+                navElement.classList.remove('shine-active');
+            }
+        }
+    };
+
     return (
         <group ref={groupRef} {...props} dispose={null}>
             <Selection>
@@ -137,19 +177,16 @@ function Model(props) {
                                 e.stopPropagation();
                                 setHovered(mesh.name);
                                 document.body.style.cursor = 'pointer';
+                                triggerNavbarShine(mesh.name);
                             }}
-                            onPointerOut={() => {
+                            onPointerOut={(e) => {
+                                e.stopPropagation();
                                 setHovered(null);
                                 document.body.style.cursor = 'default';
+                                removeNavbarShine(mesh.name);
                             }}
                         >
-                            {hovered === mesh.name && (
-                                <Html position={[3, 0, 0]} center>
-                                    <div className="bg-white text-black px-2 py-1 rounded text-sm">
-                                        {mesh.title}
-                                    </div>
-                                </Html>
-                            )}
+                            {/* Removed hover text display */}
                         </mesh>
                     </Select>
                 ))}
@@ -212,7 +249,7 @@ const Hero = () => {
                     <Suspense fallback={<CanvasLoader />}>
                         <CameraRig />
                         <PerspectiveCamera position={[50, 20, 1040]} zoom={100} fov={90} />
-                       
+                        
                         <Model
                             position={sizes.deskPosition}
                             rotation={[0, 120, 0]}

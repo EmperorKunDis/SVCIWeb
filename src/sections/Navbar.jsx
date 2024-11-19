@@ -7,7 +7,12 @@ const NavItems = ({ onClick = () => {} }) => (
     <ul className="nav-ul">
         {navLinks.map((item) => (
             <li key={item.id} className="nav-li">
-                <a href={item.href} className="nav-li_a shine-effect" onClick={onClick}>
+                <a 
+                    href={item.href} 
+                    className="nav-li_a shine-effect" 
+                    onClick={onClick}
+                    data-nav-item={item.name}
+                >
                     {item.name}
                 </a>
             </li>
@@ -25,10 +30,18 @@ const Navbar = () => {
         <header className="fixed top-0 left-0 right-0 z-50 bg-black/70">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center py-5 mx-auto c-space">
-                    <a href="/" className="text-neutral-600 font-bold text-xl hover:text-white transition-colors shine-effect">
+                    <a 
+                        href="/" 
+                        className="text-neutral-600 font-bold text-xl hover:text-white transition-colors shine-effect"
+                        data-nav-item="SVCI"
+                    >
                         SVCI
                     </a>
-                    <a href="/" className="text-neutral-600 font-bold text-xl hover:text-white transition-colors shine-effect">
+                    <a 
+                        href="/" 
+                        className="text-neutral-600 font-bold text-xl hover:text-white transition-colors shine-effect"
+                        data-nav-item="LBO"
+                    >
                         LBO
                     </a>
 
