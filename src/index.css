@@ -160,9 +160,10 @@ body {
   .shine-effect:hover,
   .shine-effect.shine-active {
     color: white;
-    text-shadow: 0 0 30px rgb(255, 229, 229),
-               0 0 60px rgb(255, 118, 118),
-               0 0 90px rgb(255, 11, 11);
+    font-size: large;
+    text-shadow: 0 0 40px rgb(255, 229, 229),
+               0 0 80px rgb(255, 118, 118),
+               0 0 120px rgb(255, 11, 11);
   }
 
 
