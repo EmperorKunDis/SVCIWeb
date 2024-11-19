@@ -9,14 +9,13 @@ const CanvasLoader = () => {
         as="div"
         center
         style={{
-            display: 'flex',
+            display: 'outside',
             justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column'
+            alignItems: 'center'
             }}
         >
             <span className="canvas-loader" />
-            <p style={{ color: '#f1f1f1', fontSize: '14px', fontWeight: 800, marginTop: 40 }}>
+            <p style={{ color: '#f1f1f1', fontSize: '24px', fontWeight: 800, marginTop: 40 }}>
                 {progress != 0 ? `${progress.toFixed(2)}%` : 'Loading ...'}</p>
         </Html>
     )
