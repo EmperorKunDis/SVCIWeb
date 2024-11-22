@@ -63,7 +63,7 @@ A modern, interactive web frontend for the Bannerlord Web Application, featuring
 1. Clone the repository
 2. Navigate to the frontend directory:
    ```bash
-   cd frontend
+   cd SVCIWeb
    ```
 3. Install dependencies:
    ```bash
